@@ -100,6 +100,7 @@ if by_actor.shape[0]>1:
 	extra1 = "s"
 
 st.header(f"Top Crime Actors{extra1} in {option}{emoji}")
+st.subheader("Between 1997 and 2023 March 31st")
 
 group_of_actors = pd.DataFrame()
 
