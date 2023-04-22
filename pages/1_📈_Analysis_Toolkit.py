@@ -116,7 +116,7 @@ for pos in range(0, by_actor.shape[0]):
     events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].EVENT_TYPE.unique())))
     sub_events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].SUB_EVENT_TYPE.unique())))
 
-group_of_actors["LOCATIONS OPERATED"] = locations
+group_of_actors["SUB-NATIONAL ADMINISTRATIVE REGIONS OPERATED"] = locations
 group_of_actors["EVENT TYPES"] = events
 group_of_actors["SUB-EVENT TYPES"] = sub_events
 
