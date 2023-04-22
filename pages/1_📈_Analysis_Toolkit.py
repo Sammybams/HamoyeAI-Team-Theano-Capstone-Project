@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import numpy as np
 from Crime_Forecast_App import load_data
+import json
 
 st.set_page_config(page_title="Analysis Toolkit", page_icon="📈")
 
@@ -18,6 +19,13 @@ countries_to_check = sorted(crime.COUNTRY.unique())
 option = st.selectbox(
     'Select Country to Analyse',
     (countries_to_check))
+
+f = open('country_flags.json')
+data = json.load(f) # returns JSON object as a dictionary
+
+for country in data:
+    if country['name'] == "Nigeria":
+        print(country['emoji'])
 
 selected = crime.loc[crime['COUNTRY']==option]
 max_fatality = selected.FATALITIES.max()
