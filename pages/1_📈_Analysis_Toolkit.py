@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import numpy as np
+import pandas as pd
 from Crime_Forecast_App import load_data
 import json
 
@@ -92,13 +93,28 @@ tab3.bar_chart(fatalities.head(5), height = 500)
 
 
 st.markdown("<br>", unsafe_allow_html=True)
+by_actor = selected.groupby(["ACTOR1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False).head(3)
 
-st.header(f"Top Crime Actors in {option}{emoji}")
+extra1 = ""
+if by_actor.shape[0]>1:
+	extra1 = "s"
+
+st.header(f"Top Crime Actors{extra1} in {option}{emoji}")
 
 group_of_actors = pd.DataFrame()
 
 by_actor = selected.groupby(["ACTOR1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False).head(3)
 group_of_actors["ACTOR"] = by_actor.index
 group_of_actors["TOTAL FATALITIES"] = by_actor.FATALITIES.values
+locations = []
+events = []
+sub_events = []
 
+for pos in range(0, by_actor.shape[0]):
+    locations.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].ADMIN1.unique())))
+    events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].EVENT_TYPE.unique())))
+    sub_events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].SUB_EVENT_TYPE.unique())))
 
+group_of_actors["LOCATIONS OPERATED"] = locations
+group_of_actors["EVENT TYPES"] = events
+group_of_actors["SUB-EVENT TYPES"] = sub_events
