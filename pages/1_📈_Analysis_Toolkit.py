@@ -23,9 +23,10 @@ option = st.selectbox(
 f = open('country_flags.json')
 data = json.load(f) # returns JSON object as a dictionary
 
+emoji = ""
 for country in data:
     if country['name'] == "Nigeria":
-        print(country['emoji'])
+        emoji = country['emoji']
 
 selected = crime.loc[crime['COUNTRY']==option]
 max_fatality = selected.FATALITIES.max()
@@ -38,7 +39,7 @@ deadliest = selected.loc[selected['FATALITIES']==selected['FATALITIES'].max()]
 extra = ""
 if deadliest.shape[0]>1:
 	extra = "s"
-st.header(f"Deadliest☠️ Crime{extra} Recorded in {option}🌍")
+st.header(f"Deadliest☠️ Crime{extra} Recorded in {option}{emoji}")
 
 description = {
     0: "Others",
