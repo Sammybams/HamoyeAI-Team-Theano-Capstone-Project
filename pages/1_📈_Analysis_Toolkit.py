@@ -25,7 +25,7 @@ data = json.load(f) # returns JSON object as a dictionary
 
 emoji = ""
 for country in data:
-    if country['name'] == "Nigeria":
+    if country['name'] == option:
         emoji = country['emoji']
 
 selected = crime.loc[crime['COUNTRY']==option]
@@ -68,7 +68,5 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 
 st.markdown(deadliest.T.to_markdown())
 
-# Streamlit widgets automatically run the script from top to bottom. Since
-# this button is not connected to any other logic, it just causes a plain
-# rerun.
+
 st.button("Re-run")
