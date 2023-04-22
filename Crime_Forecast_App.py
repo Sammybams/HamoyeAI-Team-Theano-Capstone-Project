@@ -68,7 +68,8 @@ tab3.bar_chart(fatalities.head(5), height = 500)
 tab4.subheader("Total Record of Fatalities Per Region")
 tab4.bar_chart(per_region, height = 500)
 
-deadliest = crime.loc[crime['FATALITIES']==crime['FATALITIES'].max()].head(1)
+deadliest = crime.loc[crime['FATALITIES']==crime['FATALITIES'].max()]
+
 extra = ""
 if deadliest.shape[0]>1:
 	extra = "s"
@@ -89,7 +90,6 @@ details = ["EVENT_DATE", "DISORDER_TYPE", "EVENT_TYPE", "SUB_EVENT_TYPE",
 			"ACTOR1", "INTER1", "INTER2", "REGION", "COUNTRY", "ADMIN1",
 			"LOCATION", "SOURCE", "NOTES", "FATALITIES"]
 
-deadliest = crime.loc[crime['FATALITIES']==crime['FATALITIES'].max()]
 deadliest.reset_index(drop=True, inplace=True)
 deadliest.index = deadliest.index + 1
 deadliest = deadliest[details]
