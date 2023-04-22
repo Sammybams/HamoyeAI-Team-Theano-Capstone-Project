@@ -25,6 +25,39 @@ by_fatality = selected[selected['FATALITIES']==max_fatality]
 
 st.write('You selected:', option)
 
+deadliest = selected.loc[selected['FATALITIES']==selected['FATALITIES'].max()]
+
+extra = ""
+if deadliest.shape[0]>1:
+	extra = "s"
+st.header(f"Deadliest☠️ Crime{extra} Recorded in {option}🌍")
+
+description = {
+    0: "Others",
+    1: "State Forces",
+    2: "Rebel Groups",
+    3: "Political Militias",
+    4: "Identity Militias",
+    5: "Rioters",
+    6: "Protesters",
+    7: "Civilians",
+    8: "External/Other Forces"
+}
+details = ["EVENT_DATE", "DISORDER_TYPE", "EVENT_TYPE", "SUB_EVENT_TYPE",
+			"ACTOR1", "INTER1", "INTER2", "REGION", "COUNTRY", "ADMIN1",
+			"LOCATION", "SOURCE", "NOTES", "FATALITIES"]
+
+deadliest.reset_index(drop=True, inplace=True)
+deadliest.index = deadliest.index + 1
+deadliest = deadliest[details]
+deadliest['EVENT_DATE'] = deadliest['EVENT_DATE'].apply(lambda x: x.strftime("%d %B, %Y"))
+deadliest['INTER1'] = deadliest['INTER1'].map(description)
+deadliest['INTER2'] = deadliest['INTER1'].map(description)
+deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
+                      'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'REGION', 'COUNTRY', 'LARGEST SUB-NATIONAL ADMINISTRATIVE REGION',
+                      'LOCATION', 'SOURCE', 'NOTES', 'FATALITIES']
+
+st.markdown(deadliest.T.to_markdown())
 
 # Streamlit widgets automatically run the script from top to bottom. Since
 # this button is not connected to any other logic, it just causes a plain
