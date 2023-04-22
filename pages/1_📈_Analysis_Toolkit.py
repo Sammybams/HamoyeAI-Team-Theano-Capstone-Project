@@ -69,9 +69,20 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 st.markdown(deadliest.T.to_markdown())
 
 
-tab1, tab2, tab3 = st.tabs(["Sub-National Administrative Regions\nwith Most Record of Crime",
-                                  "Sub-National Administrative Regions\nwith Least Record of Crime",
-                                  "Sub-National Administrative Regions\nwith Most Record of Fatalities"])
+tab1, tab2, tab3 = st.tabs(["Highest Record of Crime",
+                            "Lowest Record of Crime",
+                                  "Sub-National Administrative Regions\nwith Highest Record of Fatalities"])
 
+conflict_count = selected["ADMIN1"].value_counts()
 
+fatalities = selected.groupby(["ADMIN1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False)
+
+tab1.subheader("Sub-National Administrative Regions\nwith Most Record of Crime")
+tab1.bar_chart(conflict_count.head(6), height = 500)
+
+tab2.subheader("Sub-National Administrative Regions\nwith Least Record of Crime")
+tab2.bar_chart(conflict_count.tail(6), height = 500)
+
+tab3.subheader("Sub-National Administrative Regions\nwith Most Record of Fatalities")
+tab3.bar_chart(fatalities.head(5), height = 500)
 # st.button("Re-run")
