@@ -69,4 +69,4 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 st.markdown(deadliest.T.to_markdown())
 
 
-st.button("Re-run")
+# st.button("Re-run")
