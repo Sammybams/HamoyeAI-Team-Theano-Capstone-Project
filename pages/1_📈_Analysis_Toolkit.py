@@ -110,7 +110,7 @@ group_of_actors["ACTOR"] = by_actor.index
 no_of_crimes = []
 for pos in range(0, by_actor.shape[0]):
     no_of_crimes.append(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].shape[0])
-group_of_actors["NUMBER OF CRIMES"] =no_of_crimes = []
+group_of_actors["NUMBER OF CRIMES"] = no_of_crimes
 
 group_of_actors["TOTAL FATALITIES"] = by_actor.FATALITIES.values
 locations = []
