@@ -69,4 +69,9 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 st.markdown(deadliest.T.to_markdown())
 
 
+tab1, tab2, tab3 = st.tabs(["Sub-National Administrative Regions\nwith Most Record of Crime",
+                                  "Sub-National Administrative Regions\nwith Least Record of Crime",
+                                  "Sub-National Administrative Regions\nwith Most Record of Fatalities"])
+
+
 # st.button("Re-run")
