@@ -78,12 +78,12 @@ conflict_count = selected["ADMIN1"].value_counts()
 
 fatalities = selected.groupby(["ADMIN1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False)
 
-tab1.subheader("Sub-National Administrative Regions\nwith Highest Record of Crime")
+tab1.subheader("Sub-National Administrative Region with Highest Record of Crime")
 tab1.bar_chart(conflict_count.head(3), height = 500)
 
-tab2.subheader("Sub-National Administrative Regions\nwith Lowest Record of Crime")
+tab2.subheader("Sub-National Administrative Regions with Lowest Record of Crime")
 tab2.bar_chart(conflict_count.tail(3), height = 500)
 
-tab3.subheader("Sub-National Administrative Regions\nwith Highest Total Record of Fatalities")
+tab3.subheader("Sub-National Administrative Regions with Highest Total Record of Fatalities")
 tab3.bar_chart(fatalities.head(5), height = 500)
 # st.button("Re-run")
