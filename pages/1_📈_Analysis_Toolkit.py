@@ -118,3 +118,9 @@ for pos in range(0, by_actor.shape[0]):
 group_of_actors["LOCATIONS OPERATED"] = locations
 group_of_actors["EVENT TYPES"] = events
 group_of_actors["SUB-EVENT TYPES"] = sub_events
+
+
+
+group_of_actors.reset_index(drop=True, inplace=True)
+group_of_actors.index = group_of_actors.index + 1
+st.markdown(group_of_actors.T.to_markdown())
