@@ -68,6 +68,8 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 
 st.markdown(deadliest.T.to_markdown())
 
+st.divider()
+
 st.header(f"Analysis of Crime rate and Fatalities in {option}{emoji}")
 
 tab1, tab2, tab3 = st.tabs(["Highest Record of Crime",
