@@ -95,7 +95,7 @@ deadliest.index = deadliest.index + 1
 deadliest = deadliest[details]
 deadliest['EVENT_DATE'] = deadliest['EVENT_DATE'].apply(lambda x: x.strftime("%d %B, %Y"))
 deadliest['INTER1'] = deadliest['INTER1'].map(description)
-deadliest['INTER2'] = deadliest['INTER1'].map(description)
+deadliest['INTER2'] = deadliest['INTER2'].map(description)
 deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
                       'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'REGION', 'COUNTRY', 'LARGEST SUB-NATIONAL ADMINISTRATIVE REGION',
                       'LOCATION', 'SOURCE', 'NOTES', 'FATALITIES']
