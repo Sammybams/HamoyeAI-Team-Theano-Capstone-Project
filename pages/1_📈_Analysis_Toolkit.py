@@ -55,7 +55,7 @@ description = {
 }
 details = ["EVENT_DATE", "DISORDER_TYPE", "EVENT_TYPE", "SUB_EVENT_TYPE",
 			"ACTOR1", "INTER1", "INTER2", "REGION", "COUNTRY", "ADMIN1",
-			"LOCATION", "SOURCE", "NOTES", "FATALITIES"]
+			"LOCATION", "SOURCE", "SOURCE_SCALE", "NOTES", "FATALITIES"]
 
 deadliest.reset_index(drop=True, inplace=True)
 deadliest.index = deadliest.index + 1
@@ -65,7 +65,7 @@ deadliest['INTER1'] = deadliest['INTER1'].map(description)
 deadliest['INTER2'] = deadliest['INTER2'].map(description)
 deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
                       'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'REGION', 'COUNTRY', 'LARGEST SUB-NATIONAL ADMINISTRATIVE REGION',
-                      'LOCATION', 'SOURCE', 'NOTES', 'FATALITIES']
+                      'LOCATION', 'SOURCE', 'SOURCE SCALE', 'NOTES', 'FATALITIES']
 
 st.markdown(deadliest.T.to_markdown())
 
