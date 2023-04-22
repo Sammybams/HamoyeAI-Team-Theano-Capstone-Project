@@ -1,11 +1,13 @@
 import streamlit as st
+
+st.set_page_config(page_title="Analysis Toolkit", page_icon="📈")
+
 import time
 import numpy as np
 import pandas as pd
 from Crime_Forecast_App import load_data
 import json
 
-st.set_page_config(page_title="Analysis Toolkit", page_icon="📈")
 
 st.markdown("# Analysis Toolkit")
 st.sidebar.header("Analysis Toolkit")
