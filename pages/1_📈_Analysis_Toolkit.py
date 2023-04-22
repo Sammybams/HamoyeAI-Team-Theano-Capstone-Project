@@ -116,15 +116,22 @@ group_of_actors["TOTAL FATALITIES"] = by_actor.FATALITIES.values
 locations = []
 events = []
 sub_events = []
-
+actors_crime_notes = []
 for pos in range(0, by_actor.shape[0]):
     locations.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].ADMIN1.unique())))
     events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].EVENT_TYPE.unique())))
     sub_events.append(", ".join(sorted(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].SUB_EVENT_TYPE.unique())))
 
+    # Getting Description of Biggest Crime in terms of Fatalities.
+    actors_crimes = selected.loc[selected["ACTOR1"]==by_actor.index[pos]]
+    actors_crime_notes.append(actors_crimes.loc[actors_crimes["FATALITIES"]==actors_crimes["FATALITIES"].max()].head(1).NOTES.values[0])
+
+
 group_of_actors["SUB-NATIONAL ADMINISTRATIVE REGIONS OPERATED"] = locations
 group_of_actors["EVENT TYPES"] = events
 group_of_actors["SUB-EVENT TYPES"] = sub_events
+group_of_actors["DESCRIPTION OF BIGGEST CRIME"] = actors_crime_notes
+
 
 group_of_actors.reset_index(drop=True, inplace=True)
 group_of_actors.index = group_of_actors.index + 1
