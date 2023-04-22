@@ -68,7 +68,7 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
 
 st.markdown(deadliest.T.to_markdown())
 
-st.divider()
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.header(f"Analysis of Crime rate and Fatalities in {option}{emoji}")
 
@@ -89,3 +89,16 @@ tab2.bar_chart(conflict_count.tail(3), height = 500)
 tab3.subheader("Sub-National Administrative Regions with Highest Total Record of Fatalities")
 tab3.bar_chart(fatalities.head(5), height = 500)
 # st.button("Re-run")
+
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.header(f"Top Crime Actors in {option}{emoji}")
+
+group_of_actors = pd.DataFrame()
+
+by_actor = selected.groupby(["ACTOR1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False).head(3)
+group_of_actors["ACTOR"] = by_actor.index
+group_of_actors["TOTAL FATALITIES"] = by_actor.FATALITIES.values
+
+
