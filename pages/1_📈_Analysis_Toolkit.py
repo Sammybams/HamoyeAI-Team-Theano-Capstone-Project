@@ -106,6 +106,12 @@ group_of_actors = pd.DataFrame()
 
 by_actor = selected.groupby(["ACTOR1"])[["FATALITIES"]].sum().sort_values(by=["FATALITIES"], axis=0, ascending=False).head(3)
 group_of_actors["ACTOR"] = by_actor.index
+
+no_of_crimes = []
+for pos in range(0, by_actor.shape[0]):
+    no_of_crimes.append(selected.loc[selected["ACTOR1"]==by_actor.index[pos]].shape[0])
+group_of_actors["NUMBER OF CRIMES"] =no_of_crimes = []
+
 group_of_actors["TOTAL FATALITIES"] = by_actor.FATALITIES.values
 locations = []
 events = []
@@ -119,8 +125,6 @@ for pos in range(0, by_actor.shape[0]):
 group_of_actors["SUB-NATIONAL ADMINISTRATIVE REGIONS OPERATED"] = locations
 group_of_actors["EVENT TYPES"] = events
 group_of_actors["SUB-EVENT TYPES"] = sub_events
-
-
 
 group_of_actors.reset_index(drop=True, inplace=True)
 group_of_actors.index = group_of_actors.index + 1
