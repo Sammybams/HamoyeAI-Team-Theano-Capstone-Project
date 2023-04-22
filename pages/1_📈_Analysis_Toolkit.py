@@ -135,7 +135,6 @@ group_of_actors["SUB-EVENT TYPES"] = sub_events
 group_of_actors["NUMBER OF FATALITIES IN BIGGEST CRIME"] = fatalites_of_biggest_crime
 group_of_actors["DESCRIPTION OF BIGGEST CRIME"] = actors_crime_notes
 
-
 group_of_actors.reset_index(drop=True, inplace=True)
 group_of_actors.index = group_of_actors.index + 1
 st.markdown(group_of_actors.T.to_markdown())
