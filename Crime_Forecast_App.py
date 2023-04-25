@@ -8,7 +8,7 @@ from streamlit_folium import st_folium, folium_static
 
 st.title('Analysing and Forecasting Crime in Africa')
 
-DATA_URL = "/Users/samuelbamgbola/Downloads/Crime-HamoyeAI-Capstone-Project/africa_crime_cleaned.parquet"
+DATA_URL = "/Users/samuelbamgbola/Downloads/Crime-HamoyeAI-Capstone-Project/africa_crime_cleaned_copy.parquet"
 
 @st.experimental_memo
 def load_data():
