@@ -101,3 +101,7 @@ deadliest.columns = ['EVENT DATE', 'DISORDER TYPE', 'EVENT TYPE', 'SUB EVENT TYP
                       'LOCATION', 'SOURCE', 'NOTES', 'FATALITIES']
 
 st.markdown(deadliest.T.to_markdown())
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("Built by Theano led by [Samuel Bamgbola](https://www.linkedin.com/in/bamgbola-samuel-29baa91a3/)", unsafe_allow_html=True)
