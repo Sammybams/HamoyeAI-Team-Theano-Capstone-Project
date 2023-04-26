@@ -25,34 +25,30 @@ st.subheader(
 
 crime = load_data()
 
-col1, col2, col3, col4, col5, col6 = st.columns(6)
 
-with col1:
-    date = st.date_input(
-        "Choose expected date",
-        datetime.datetime.today())
+date = st.date_input(
+    "Choose expected date",
+    datetime.datetime.today())
 
-with col2:
-    disorder_type = st.selectbox(
-        'Select Disorder Type',
-        (sorted(crime.DISORDER_TYPE.unique())))
-    
-with col3:
-    region = st.selectbox(
-        'Select Region',
-        (sorted(crime.REGION.unique())))
+disorder_type = st.selectbox(
+    'Select Disorder Type',
+    (sorted(crime.DISORDER_TYPE.unique())))
 
-with col4:
-    country = st.selectbox(
-        'Select Country',
-        (sorted(crime.COUNTRY.unique())))
-    
-with col5:
-    admin1 = st.selectbox(
-        'Select Sub-national Admin Region',
-        (sorted(crime.ADMIN1.unique())))
-    
-with col6:
-    location = st.selectbox(
-        'Select Location',
-        (sorted(crime.LOCATION.unique())))
+region = st.selectbox(
+    'Select Region',
+    (sorted(crime.REGION.unique())))
+
+updated = crime.loc[crime['REGION']==region]
+country = st.selectbox(
+    'Select Country',
+    (sorted(updated.COUNTRY.unique())))
+
+updated = updated.loc[updated['COUNTRY']==country]
+admin1 = st.selectbox(
+    'Select Sub-national Admin Region',
+    (sorted(updated.ADMIN1.unique())))
+
+updated = updated.loc[updated['ADMIN1']==admin1]
+location = st.selectbox(
+    'Select Location',
+    (sorted(updated.LOCATION.unique())))
