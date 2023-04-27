@@ -15,6 +15,24 @@ st.subheader(
 )
 
 crime = load_data()
+DATA_URL_ENCODED = "/Users/samuelbamgbola/Downloads/Crime-HamoyeAI-Capstone-Project/africa_crime_cleaned.parquet"
+
+@st.experimental_memo
+def load_data_encoded():
+
+	data = pd.read_parquet(DATA_URL_ENCODED)
+
+	return data
+
+encoded_set = load_data_encoded()
+actor1_dict = dict(zip(crime.ACTOR1.unique(), encoded_set.ACTOR1_encode.unique()))
+actor1_dict_reverse = dict(zip(encoded_set.ACTOR1_encode.unique(), crime.ACTOR1.unique()))
+
+admin1_dict = dict(zip(crime.ADMIN1.unique(), encoded_set.ADMIN1_encode.unique()))
+admin1_dict_reverse = dict(zip(encoded_set.ADMIN1_encode.unique(), crime.ADMIN1.unique()))
+
+location_dict = dict(zip(crime.LOCATION.unique(), encoded_set.LOCATION_encode.unique()))
+location_dict_reverse = dict(zip(encoded_set.LOCATION_encode.unique(), crime.LOCATION.unique()))
 
 date = st.date_input(
     "Choose expected date",
@@ -59,7 +77,7 @@ inter2_options = []
 interactions_options = []
 
 for event in updated:
-    updated =  updated.loc[somolu["EVENT_TYPE"]==event]
+    updated =  updated.loc[updated["EVENT_TYPE"]==event]
     for sub_event in updated.SUB_EVENT_TYPE.unique():
         updated_2 = updated.loc[updated["SUB_EVENT_TYPE"]==sub_event]
         for actor in updated_2.ACTOR1.unique():
@@ -91,6 +109,9 @@ test['ACTOR1'] = actor1_options
 test['INTER1'] = inter_1_options
 test['INTER2'] = inter2_options
 test['INTERACTION'] = interactions_options
+
+
+
 with st.button("Run"):
 
 
