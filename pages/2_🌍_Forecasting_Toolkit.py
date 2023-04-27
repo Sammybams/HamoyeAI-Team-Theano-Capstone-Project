@@ -46,6 +46,16 @@ description = {
     "External/Other Forces": 8
 }
 
+mapping_binned_reverse = {
+    0: "101 TO 500",
+    1: "11 TO 50",
+    2: "1",
+    3: "2 TO 10",
+    4: "501 TO 1350",
+    5: "51_TO_100",
+    6: "0"
+}
+
 date = st.date_input(
     "Choose expected date",
     datetime.datetime.today())
