@@ -14,17 +14,7 @@ st.subheader(
     """Forecast the occurence in a location based on observed disorder type and date."""
 )
 
-# @st.experimental_memo
-# def from_data_file(filename):
-#     url = (
-#         "http://raw.githubusercontent.com/streamlit/"
-#         "example-data/master/hello/v1/%s" % filename
-#     )
-#     return pd.read_json(url)
-
-
 crime = load_data()
-
 
 date = st.date_input(
     "Choose expected date",
