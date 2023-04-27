@@ -34,6 +34,18 @@ admin1_dict_reverse = dict(zip(encoded_set.ADMIN1_encode.unique(), crime.ADMIN1.
 location_dict = dict(zip(crime.LOCATION.unique(), encoded_set.LOCATION_encode.unique()))
 location_dict_reverse = dict(zip(encoded_set.LOCATION_encode.unique(), crime.LOCATION.unique()))
 
+description = {
+    "Others": 0,
+    "State Forces": 1,
+    "Rebel Groups": 2,
+    "Political Militias": 3,
+    "Identity Militias": 4,
+    "Rioters": 5,
+    "Protesters": 6,
+    "Civilians": 7,
+    "External/Other Forces": 8
+}
+
 date = st.date_input(
     "Choose expected date",
     datetime.datetime.today())
@@ -110,7 +122,12 @@ test['INTER1'] = inter_1_options
 test['INTER2'] = inter2_options
 test['INTERACTION'] = interactions_options
 
+test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
+test['LOCATION'] = test['LOCATION'].map(location_dict)
+test['ACTOR1'] = test['ACTOR1'].map(actor1_dict)
 
+test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
+test.drop(['ADMIN1', 'LOCATION', 'ACTOR1'], axis=1, inplace=True)
 
 with st.button("Run"):
 
