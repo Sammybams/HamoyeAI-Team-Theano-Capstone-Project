@@ -87,7 +87,7 @@ actor1_options = []
 inter_1_options = []
 inter2_options = []
 interactions_options = []
-
+date_time_options = []
 for event in updated:
     updated =  updated.loc[updated["EVENT_TYPE"]==event]
     for sub_event in updated.SUB_EVENT_TYPE.unique():
@@ -108,6 +108,8 @@ for event in updated:
                     country_options.append(country)
                     admin1_options.append(admin1)
                     location_options.append(location)
+                    date_time_options.append(date)
+
 
 test = pd.DataFrame()
 test['DISORDER_TYPE'] = disorder_type_options
@@ -122,14 +124,18 @@ test['INTER1'] = inter_1_options
 test['INTER2'] = inter2_options
 test['INTERACTION'] = interactions_options
 
+test['EVENT_DATE'] = date_time_options
 test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
 test['LOCATION'] = test['LOCATION'].map(location_dict)
 test['ACTOR1'] = test['ACTOR1'].map(actor1_dict)
 
+test['day_of_year'] = test.EVENT_DATE.dt.day_of_year
+test['month'] = test.EVENT_DATE.dt.month
+test['year'] = test.EVENT_DATE.dt.year
+
+
 test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
-test.drop(['ADMIN1', 'LOCATION', 'ACTOR1'], axis=1, inplace=True)
+test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_TYPE'], axis=1, inplace=True)
 
 with st.button("Run"):
-
-
     pass
