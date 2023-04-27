@@ -45,5 +45,53 @@ location = st.selectbox(
 
 updated = updated.loc[updated['LOCATION']==location]
 
+disorder_type_options = []
+region_options = []
+country_options = []
+admin1_options = []
+location_options = []
+
+event_options = []
+sub_event_options = []
+actor1_options = []
+inter_1_options = []
+inter2_options = []
+interactions_options = []
+
+for event in updated:
+    updated =  updated.loc[somolu["EVENT_TYPE"]==event]
+    for sub_event in updated.SUB_EVENT_TYPE.unique():
+        updated_2 = updated.loc[updated["SUB_EVENT_TYPE"]==sub_event]
+        for actor in updated_2.ACTOR1.unique():
+            updated_3 = updated_2.loc[updated_2["ACTOR1"]==actor]
+            for inter_1 in updated_3.INTER1.unique():
+                updated_4 = updated_3.loc[updated_3["INTER1"]==inter_1]
+                for i in range(0,9):
+                    event_options.append(event)
+                    sub_event_options.append(sub_event)
+                    actor1_options.append(actor)
+                    inter_1_options.append(inter_1)
+                    inter2_options.append(i)
+                    interactions_options.append(inter_1*10 + i)
+                    disorder_type_options.append(disorder_type)
+                    region_options.append(region)
+                    country_options.append(country)
+                    admin1_options.append(admin1)
+                    location_options.append(location)
+
+test = pd.DataFrame()
+test['DISORDER_TYPE'] = disorder_type_options
+test['REGION'] = region_options
+test['COUNTRY'] = country_options
+test['ADMIN1'] = admin1_options
+test['LOCATION'] = location_options
+test['EVENT_TYPE'] = event_options
+test['SUB_EVENT_TYPE'] = sub_event_options
+test['ACTOR1'] = actor1_options
+test['INTER1'] = inter_1_options
+test['INTER2'] = inter2_options
+test['INTERACTION'] = interactions_options
 with st.button("Run"):
+
+
     pass
