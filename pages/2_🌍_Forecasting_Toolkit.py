@@ -43,7 +43,7 @@ location = st.selectbox(
     'Select Location',
     (sorted(updated.LOCATION.unique())))
 
-
+updated = updated.loc[updated['LOCATION']==location]
 
 with st.button("Run"):
     pass
