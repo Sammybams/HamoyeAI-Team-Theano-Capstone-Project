@@ -52,3 +52,8 @@ updated = updated.loc[updated['ADMIN1']==admin1]
 location = st.selectbox(
     'Select Location',
     (sorted(updated.LOCATION.unique())))
+
+
+
+with st.button("Run"):
+    pass
