@@ -5,6 +5,10 @@ import datetime
 from urllib.error import URLError
 from Crime_Forecast_App import load_data
 
+from dotenv import load_dotenv
+load_dotenv('bot_token.env')
+
+
 st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
 
 st.markdown("# Forecasting Toolkit")
@@ -15,7 +19,7 @@ st.subheader(
 )
 
 crime = load_data()
-DATA_URL_ENCODED = "/Users/samuelbamgbola/Downloads/Crime-HamoyeAI-Capstone-Project/africa_crime_cleaned.parquet"
+DATA_URL_ENCODED = DATA_URL = os.environ.get('DATA_URL_ENCODED')
 
 @st.experimental_memo
 def load_data_encoded():
