@@ -6,12 +6,13 @@ import folium
 from folium import plugins
 from streamlit_folium import st_folium, folium_static
 
-from dotenv import load_dotenv
-load_dotenv('bot_token.env')
+#from dotenv import load_dotenv
+#load_dotenv('bot_token.env')
 
 st.title('Analysing and Forecasting Crime in Africa')
 
-DATA_URL = os.environ.get('DATA_URL')
+#DATA_URL = os.environ.get('DATA_URL')
+DATA_URL = st.secrets["DATA_URL"]
 
 @st.experimental_memo
 def load_data():
