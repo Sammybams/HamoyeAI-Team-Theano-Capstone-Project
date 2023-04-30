@@ -42,7 +42,7 @@ deadliest = selected.loc[selected['FATALITIES']==selected['FATALITIES'].max()]
 extra = ""
 if deadliest.shape[0]>1:
 	extra = "s"
-st.header(f"Deadliest☠️ Crime{extra} Recorded in {option}{emoji}")
+st.header(f"Deadliest☠️ Crime{extra} Recorded in {option} {emoji}")
 
 description = {
     0: "Others",
