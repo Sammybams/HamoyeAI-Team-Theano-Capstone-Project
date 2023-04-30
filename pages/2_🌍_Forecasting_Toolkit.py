@@ -81,7 +81,7 @@ country = st.selectbox(
 
 updated = updated.loc[updated['COUNTRY']==country]
 admin1 = st.selectbox(
-    'Select Sub-national Administrative Region',
+    'Select Largest Sub-national Administrative Region',
     (sorted(updated.ADMIN1.unique())))
 
 updated = updated.loc[updated['ADMIN1']==admin1]
