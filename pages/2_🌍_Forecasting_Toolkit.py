@@ -151,6 +151,8 @@ test['INTER1'] = inter_1_options
 test['INTER2'] = inter2_options
 test['INTERACTION'] = interactions_options
 
+st.markdown(test.to_markdown())
+
 test['EVENT_DATE'] = date_time_options
 test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
 test['LOCATION'] = test['LOCATION'].map(location_dict)
