@@ -73,7 +73,8 @@ mapping_binned_reverse = {
 
 date = st.date_input(
     "Choose expected date",
-    datetime.datetime.today())
+    value = datetime.datetime.today(),
+    min_value=crime.loc[0]['EVENT_DATE'].value)
 
 disorder_type = st.selectbox(
     'Select Disorder Type',
