@@ -138,21 +138,44 @@ for event in updated.EVENT_TYPE.unique():
 
 
 test = pd.DataFrame(0, index=np.arange(len(event_options)), columns=encoded_set.columns.values)
-test['DISORDER_TYPE'] = disorder_type_options
-test['REGION'] = region_options
-test['COUNTRY'] = country_options
-test['ADMIN1'] = admin1_options
-test['LOCATION'] = location_options
-test['EVENT_TYPE'] = event_options
-test['SUB_EVENT_TYPE'] = sub_event_options
-test['ACTOR1'] = actor1_options
-test['INTER1'] = inter_1_options
-test['INTER2'] = inter2_options
-test['INTERACTION'] = interactions_options
-
+record = pd.DataFrame()
 
 test['EVENT_DATE'] = date_time_options
 test['EVENT_DATE'] = pd.to_datetime(test.EVENT_DATE, format='%Y-%m-%d')
+record['EVENT_DATE'] = test['EVENT_DATE'].values
+
+test['DISORDER_TYPE'] = disorder_type_options
+record['DISORDER_TYPE'] = disorder_type_options
+
+test['REGION'] = region_options
+record['REGION'] = region_options
+
+test['COUNTRY'] = country_options
+record['COUNTRY'] = country_options
+
+test['ADMIN1'] = admin1_options
+record['ADMIN1'] = admin1_options
+
+test['LOCATION'] = location_options
+record['LOCATION'] = location_options
+
+test['EVENT_TYPE'] = event_options
+record['EVENT_TYPE'] = event_options
+
+test['SUB_EVENT_TYPE'] = sub_event_options
+record['SUB_EVENT_TYPE'] = sub_event_options
+
+test['ACTOR1'] = actor1_options
+record['ACTOR1'] = actor1_options
+
+test['INTER1'] = inter_1_options
+record['INTER1'] = inter_1_options
+
+test['INTER2'] = inter2_options
+record['INTER2'] = inter2_options
+
+test['INTERACTION'] = interactions_options
+
 
 test['ADMIN1_encode'] = test['ADMIN1'].map(admin1_dict)
 test['LOCATION_encode'] = test['LOCATION'].map(location_dict)
@@ -178,4 +201,39 @@ test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE', 'fatalites-binned',
 st.dataframe(test)
 
 if st.button("Run"):
-    st.header("Coming soon")
+    st.header("Predictions")
+
+    scaler, pca, model = load_models()
+
+    test_scaled = scaler.transform(test)
+    test_scaled_pca = pca.transform(test_scaled)
+    predictions = model.predict(test_scaled_pca)
+
+    record['PREDICTED FATALITIES'] = predictions
+    record['PREDICTED FATALITIES'] = record['PREDICTED FATALITIES'].map(mapping_binned_reverse)
+
+
+    record.columns = ['EVENT DATE', 'DISORDER TYPE','REGION', 'COUNTRY',
+                      'LARGEST SUB-NATIONAL ADMINISTRATIVE REGION',
+                      'LOCATION', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
+                      'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'PREDICTED FATALITIES']
+    
+    record = record.sort_values(by=['PREDICTED FATALITIES'], ascending=False)
+
+    top_2 = record.head(2)
+    bottom_2 = record.tail(2)
+
+    extra_s1 = ""
+    extra_s2 = ""
+    if len(top_2) > 1:
+        extra_s1 = "s"
+    if len(bottom_2) > 1:
+        extra_s2 = "s"
+
+    tab1, tab2 = st.tabs([f"Worst Case Scenario{extra_s1}", f"Best Case Scenario{extra_s1}"])
+
+    tab1.subheader("Highest Predicted Fatalities")
+    tab1.markdown(top_2.T.to_markdown())
+     
+    tab2.subheader("Lowest Predicted Fatalities")
+    tab2.markdown(bottom_2.T.to_markdown())
