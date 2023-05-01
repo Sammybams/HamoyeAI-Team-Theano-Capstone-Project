@@ -71,6 +71,7 @@ mapping_binned_reverse = {
     6: "0"
 }
 
+crime['EVENT_DATE'] = pd.to_datetime(crime.EVENT_DATE, format='%Y-%m-%d')
 date = st.date_input(
     "Choose expected date",
     value = datetime.datetime.today(),
