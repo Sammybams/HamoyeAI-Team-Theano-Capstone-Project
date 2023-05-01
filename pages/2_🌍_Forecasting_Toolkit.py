@@ -168,7 +168,9 @@ test['day_of_year'] = test.EVENT_DATE.dt.day_of_year
 test['month'] = test.EVENT_DATE.dt.month
 test['year'] = test.EVENT_DATE.dt.year
 
-test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE'], axis=1, inplace=True)
+test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE', 'fatalites-binned',
+           'fataliies-binned-encoded', 'DISORDER_TYPE', 'REGION', 'COUNTRY',
+           'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'], axis=1, inplace=True)
 
 
 
