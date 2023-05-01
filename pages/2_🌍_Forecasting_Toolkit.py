@@ -215,7 +215,7 @@ if st.button("Run"):
                       'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'PREDICTED FATALITIES']
     
     record = record.sort_values(by=['PREDICTED FATALITIES'], ascending=False)
-    st.dataframe(record)
+
     record.reset_index(drop=True, inplace=True)
     record.index = record.index + 1
 
