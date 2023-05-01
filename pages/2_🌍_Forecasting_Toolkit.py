@@ -11,9 +11,6 @@ from pickle import load
 # from dotenv import load_dotenv
 # load_dotenv('bot_token.env')
 
-
-
-
 st.markdown("# Forecasting Toolkit")
 st.sidebar.header("Forecasting Toolkit")
 
@@ -41,6 +38,17 @@ def load_models():
 
     return scaler, pca, model
 
+description = {
+    0: "Others",
+    1: "State Forces",
+    2: "Rebel Groups",
+    3: "Political Militias",
+    4: "Identity Militias",
+    5: "Rioters",
+    6: "Protesters",
+    7: "Civilians",
+    8: "External/Other Forces"
+}
 
 encoded_set = load_data_encoded()
 actor1_dict = dict(zip(crime.ACTOR1.unique(), encoded_set.ACTOR1_encode.unique()))
@@ -171,10 +179,10 @@ test['ACTOR1'] = actor1_options
 record['ACTOR1'] = actor1_options
 
 test['INTER1'] = inter_1_options
-record['INTER1'] = inter_1_options
+record['INTER1'] = test['INTER1'].map(description)
 
 test['INTER2'] = inter2_options
-record['INTER2'] = inter2_options
+record['INTER2'] = test['INTER2'].map(description)
 
 test['INTERACTION'] = interactions_options
 
