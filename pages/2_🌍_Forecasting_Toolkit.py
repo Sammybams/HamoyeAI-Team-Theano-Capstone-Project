@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
+import numpy as np
 import datetime
-from urllib.error import URLError
 from Crime_Forecast_App import load_data
-from pickle import dump, load
+from pickle import load
 
 # from dotenv import load_dotenv
 # load_dotenv('bot_token.env')
@@ -138,7 +137,7 @@ for event in updated.EVENT_TYPE.unique():
                     date_time_options.append(date)
 
 
-test = pd.DataFrame()
+test = pd.DataFrame(0, index=np.arange(len(event_options)), columns=encoded_set.columns.values)
 test['DISORDER_TYPE'] = disorder_type_options
 test['REGION'] = region_options
 test['COUNTRY'] = country_options
@@ -153,19 +152,18 @@ test['INTERACTION'] = interactions_options
 
 
 test['EVENT_DATE'] = date_time_options
-test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
-test['LOCATION'] = test['LOCATION'].map(location_dict)
-test['ACTOR1'] = test['ACTOR1'].map(actor1_dict)
+test['ADMIN1_encode'] = test['ADMIN1'].map(admin1_dict)
+test['LOCATION_encode'] = test['LOCATION'].map(location_dict)
+test['ACTOR1_encode'] = test['ACTOR1'].map(actor1_dict)
 
+
+test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
+test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE'], axis=1, inplace=True)
 
 test['EVENT_DATE'] = pd.to_datetime(test.EVENT_DATE, format='%Y-%m-%d')
 test['day_of_year'] = test.EVENT_DATE.dt.day_of_year
 test['month'] = test.EVENT_DATE.dt.month
 test['year'] = test.EVENT_DATE.dt.year
-
-
-test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
-test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE'], axis=1, inplace=True)
 
 st.dataframe(test)
 
