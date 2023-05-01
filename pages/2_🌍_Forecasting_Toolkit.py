@@ -71,14 +71,10 @@ mapping_binned_reverse = {
     6: "0"
 }
 
-minimum_date = crime.loc[0]
-minimum_date['EVENT_DATE'] = pd.to_datetime(minimum_date.EVENT_DATE, format='%Y-%m-%d')
-minimum_date = datetime.datetime(minimum_date.EVENT_DATE.dt.year, minimum_date.EVENT_DATE.dt.month,
-                                 minimum_date.EVENT_DATE.dt.day)
 date = st.date_input(
     "Choose expected date",
     value = datetime.datetime.today(),
-    min_value=crime.EVENT_DATE.unique().min())
+    min_value=datetime.datetime(1997, 1, 1))
 
 disorder_type = st.selectbox(
     'Select Disorder Type',
