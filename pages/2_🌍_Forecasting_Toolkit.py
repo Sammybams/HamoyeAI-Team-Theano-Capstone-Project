@@ -218,6 +218,9 @@ if st.button("Run"):
     
     record = record.sort_values(by=['PREDICTED FATALITIES'], ascending=False)
 
+    record.reset_index(drop=True, inplace=True)
+    record.index = record.index + 1
+
     top_2 = record.head(2)
     bottom_2 = record.tail(2)
 
