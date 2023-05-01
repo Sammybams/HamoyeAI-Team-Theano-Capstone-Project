@@ -11,4 +11,4 @@ tabulate
 sklearn
 sklearn-crfsuite
 sklearn-pandas
-xgboost
+xgboost==1.4.2
