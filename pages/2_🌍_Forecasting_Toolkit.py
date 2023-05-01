@@ -154,4 +154,4 @@ test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EV
 test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_TYPE'], axis=1, inplace=True)
 
 with st.button("Run"):
-    pass
+    st.header("Coming soon")
