@@ -1,4 +1,7 @@
 import streamlit as st
+
+st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
+
 import pandas as pd
 import numpy as np
 import datetime
@@ -10,7 +13,6 @@ from pickle import load
 
 
 
-st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
 
 st.markdown("# Forecasting Toolkit")
 st.sidebar.header("Forecasting Toolkit")
