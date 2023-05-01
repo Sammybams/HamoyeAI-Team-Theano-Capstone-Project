@@ -60,17 +60,6 @@ admin1_dict_reverse = dict(zip(encoded_set.ADMIN1_encode.unique(), crime.ADMIN1.
 location_dict = dict(zip(crime.LOCATION.unique(), encoded_set.LOCATION_encode.unique()))
 location_dict_reverse = dict(zip(encoded_set.LOCATION_encode.unique(), crime.LOCATION.unique()))
 
-description = {
-    "Others": 0,
-    "State Forces": 1,
-    "Rebel Groups": 2,
-    "Political Militias": 3,
-    "Identity Militias": 4,
-    "Rioters": 5,
-    "Protesters": 6,
-    "Civilians": 7,
-    "External/Other Forces": 8
-}
 
 mapping_binned_reverse = {
     0: "101 TO 500",
