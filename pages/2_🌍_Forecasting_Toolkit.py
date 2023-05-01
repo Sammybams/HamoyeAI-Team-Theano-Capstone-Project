@@ -203,7 +203,7 @@ if st.button("Run"):
 
     scaler, pca, model = load_models()
 
-    test_scaled = scaler.transform(test)
+    test_scaled = scaler.transform(test.values)
     test_scaled_pca = pca.transform(test_scaled)
     predictions = model.predict(test_scaled_pca)
 
