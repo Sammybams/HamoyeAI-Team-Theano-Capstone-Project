@@ -8,3 +8,7 @@ matplotlib-venn==0.11.7
 pyarrow==10.0.1
 python-dotenv
 tabulate
+sklearn==0.0
+sklearn-crfsuite==0.3.6
+sklearn-pandas==2.2.0
+xgboost
