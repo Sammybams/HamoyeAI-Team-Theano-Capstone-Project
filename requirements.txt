@@ -11,4 +11,4 @@ tabulate
 sklearn==0.0
 sklearn-crfsuite==0.3.6
 sklearn-pandas==2.2.0
-xgboost
+xgboost==1.6.1
