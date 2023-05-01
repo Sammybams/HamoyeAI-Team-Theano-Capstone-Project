@@ -153,7 +153,7 @@ test['year'] = test.EVENT_DATE.dt.year
 
 
 test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
-test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_TYPE'], axis=1, inplace=True)
+test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE'], axis=1, inplace=True)
 
 with st.button("Run"):
     st.header("Coming soon")
