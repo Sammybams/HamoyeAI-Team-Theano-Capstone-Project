@@ -4,9 +4,11 @@ import pydeck as pdk
 import datetime
 from urllib.error import URLError
 from Crime_Forecast_App import load_data
+from pickle import dump, load
 
 # from dotenv import load_dotenv
 # load_dotenv('bot_token.env')
+
 
 
 st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
@@ -29,6 +31,15 @@ def load_data_encoded():
 	data = pd.read_parquet(DATA_URL_ENCODED)
 
 	return data
+
+@st.experimental_memo
+def load_models():
+    scaler = load(open('scaler.pkl', 'rb'))
+    pca = load(open('pca.pkl', 'rb'))
+    model = load(open('model.pkl', 'rb')) 
+
+    return scaler, pca, model
+
 
 encoded_set = load_data_encoded()
 actor1_dict = dict(zip(crime.ACTOR1.unique(), encoded_set.ACTOR1_encode.unique()))
