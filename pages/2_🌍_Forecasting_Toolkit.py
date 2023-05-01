@@ -102,9 +102,6 @@ location = st.selectbox(
 
 updated = updated.loc[updated['LOCATION']==location]
 
-st.markdown(updated.to_markdown())
-
-
 disorder_type_options = []
 region_options = []
 country_options = []
@@ -118,7 +115,7 @@ inter_1_options = []
 inter2_options = []
 interactions_options = []
 date_time_options = []
-for event in updated:
+for event in updated.EVENT_TYPE.unique():
     updated =  updated.loc[updated["EVENT_TYPE"]==event]
     for sub_event in updated.SUB_EVENT_TYPE.unique():
         updated_2 = updated.loc[updated["SUB_EVENT_TYPE"]==sub_event]
@@ -154,7 +151,6 @@ test['INTER1'] = inter_1_options
 test['INTER2'] = inter2_options
 test['INTERACTION'] = interactions_options
 
-st.markdown(test.to_markdown())
 
 test['EVENT_DATE'] = date_time_options
 test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
@@ -171,8 +167,7 @@ test['year'] = test.EVENT_DATE.dt.year
 test = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
 test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE'], axis=1, inplace=True)
 
-# st.dataframe(test)
-st.markdown(test.to_markdown())
+st.dataframe(test)
 
 if st.button("Run"):
     st.header("Coming soon")
