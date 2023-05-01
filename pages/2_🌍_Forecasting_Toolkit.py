@@ -161,7 +161,8 @@ test['ACTOR1_encode'] = test['ACTOR1'].map(actor1_dict)
 one_hot_sample = pd.get_dummies(test, columns = ['DISORDER_TYPE', 'REGION', 'COUNTRY', 'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'])
 
 for col in one_hot_sample.columns.values:
-    test[col] = one_hot_sample[col].values
+    if col in encoded_set.columns.values:
+        test[col] = one_hot_sample[col].values
 
 test['day_of_year'] = test.EVENT_DATE.dt.day_of_year
 test['month'] = test.EVENT_DATE.dt.month
