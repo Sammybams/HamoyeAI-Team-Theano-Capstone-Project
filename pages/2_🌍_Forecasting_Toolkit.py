@@ -145,6 +145,8 @@ test['ADMIN1'] = test['ADMIN1'].map(admin1_dict)
 test['LOCATION'] = test['LOCATION'].map(location_dict)
 test['ACTOR1'] = test['ACTOR1'].map(actor1_dict)
 
+
+test['EVENT_DATE'] = pd.to_datetime(test.EVENT_DATE, format='%Y-%m-%d')
 test['day_of_year'] = test.EVENT_DATE.dt.day_of_year
 test['month'] = test.EVENT_DATE.dt.month
 test['year'] = test.EVENT_DATE.dt.year
