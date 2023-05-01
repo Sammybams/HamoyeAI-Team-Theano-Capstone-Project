@@ -72,6 +72,7 @@ mapping_binned_reverse = {
 }
 
 minimum_date = crime.loc[0]
+minimum_date['EVENT_DATE'] = pd.to_datetime(minimum_date.EVENT_DATE, format='%Y-%m-%d')
 minimum_date = datetime.datetime(minimum_date.EVENT_DATE.dt.year, minimum_date.EVENT_DATE.dt.month,
                                  minimum_date.EVENT_DATE.dt.day)
 date = st.date_input(
