@@ -144,7 +144,7 @@ record = pd.DataFrame()
 
 test['EVENT_DATE'] = date_time_options
 test['EVENT_DATE'] = pd.to_datetime(test.EVENT_DATE, format='%Y-%m-%d')
-record['EVENT_DATE'] = test['EVENT_DATE'].values
+record['EVENT_DATE'] = date_time_options
 
 test['DISORDER_TYPE'] = disorder_type_options
 record['DISORDER_TYPE'] = disorder_type_options
