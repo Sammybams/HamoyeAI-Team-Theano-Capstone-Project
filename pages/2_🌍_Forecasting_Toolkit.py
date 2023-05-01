@@ -102,6 +102,9 @@ location = st.selectbox(
 
 updated = updated.loc[updated['LOCATION']==location]
 
+st.markdown(updated.to_markdown())
+
+
 disorder_type_options = []
 region_options = []
 country_options = []
