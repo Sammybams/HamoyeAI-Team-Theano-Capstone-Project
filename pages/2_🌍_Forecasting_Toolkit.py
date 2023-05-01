@@ -222,7 +222,14 @@ if st.button("Run"):
     record.index = record.index + 1
 
     top_2 = record.head(2)
+    # Reset index and add 1 to index to start at 1
+    top_2.reset_index(drop=True, inplace=True)
+    top_2.index = top_2.index + 1
+
     bottom_2 = record.tail(2)
+    # Reset index and add 1 to index to start at 1
+    bottom_2.reset_index(drop=True, inplace=True)
+    bottom_2.index = bottom_2.index + 1
 
     extra_s1 = ""
     extra_s2 = ""
