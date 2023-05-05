@@ -205,7 +205,7 @@ test.drop(['ADMIN1', 'LOCATION', 'ACTOR1', 'EVENT_DATE', 'fatalites-binned',
            'fatalities-binned-encoded', 'DISORDER_TYPE', 'REGION', 'COUNTRY',
            'EVENT_TYPE', 'SUB_EVENT_TYPE', 'INTER1', 'INTER2'], axis=1, inplace=True)
 
-st.write(test)
+# st.write(test)
 
 if st.button("Run"):
     st.header("Predictions")
@@ -216,7 +216,7 @@ if st.button("Run"):
     test_scaled_pca = pca.transform(test_scaled)
     predictions = model.predict(test_scaled_pca)
 
-    st.write(predictions)
+    # #st.write(predictions)
 
     record['PREDICTED FATALITIES'] = predictions
     record['PREDICTED FATALITIES'] = record['PREDICTED FATALITIES'].map(mapping_binned_reverse)
