@@ -224,10 +224,13 @@ if st.button("Run"):
                       'LOCATION', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
                       'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'PREDICTED FATALITIES']
     
-    record = record.sort_values(by=['PREDICTED FATALITIES'], ascending=False)
+    record['CORRECT ORDER'] = record['PREDICTED FATALITIES'].map(correct_order)
+    record = record.sort_values(by=['CORRECT ORDER'], ascending=False)
 
     record.reset_index(drop=True, inplace=True)
     record.index = record.index + 1
+
+    record.drop(['CORRECT ORDER'], axis=1, inplace=True)
 
     top_2 = record.head(2)
     # Reset index and add 1 to index to start at 1
