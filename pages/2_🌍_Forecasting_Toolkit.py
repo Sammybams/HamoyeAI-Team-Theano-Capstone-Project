@@ -71,6 +71,16 @@ mapping_binned_reverse = {
     6: "0"
 }
 
+correct_order = {
+    "101 TO 500": 5,
+    "11 TO 50": 3,
+    "1": 0,
+    "2 TO 10": 2,
+    "501 TO 1350" :6,
+    "51 TO 100": 4,
+    "0": 0 
+}
+
 date = st.date_input(
     "Choose expected date",
     value = datetime.datetime.today(),
