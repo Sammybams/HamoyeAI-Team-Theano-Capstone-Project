@@ -227,6 +227,8 @@ if st.button("Run"):
     record['CORRECT ORDER'] = record['PREDICTED FATALITIES'].map(correct_order)
     record = record.sort_values(by=['CORRECT ORDER'], ascending=False)
 
+    st.write(record)
+
     record.reset_index(drop=True, inplace=True)
     record.index = record.index + 1
 
