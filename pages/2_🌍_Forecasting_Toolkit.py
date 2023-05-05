@@ -216,6 +216,8 @@ if st.button("Run"):
     test_scaled_pca = pca.transform(test_scaled)
     predictions = model.predict(test_scaled_pca)
 
+    st.write(predictions)
+
     record['PREDICTED FATALITIES'] = predictions
     record['PREDICTED FATALITIES'] = record['PREDICTED FATALITIES'].map(mapping_binned_reverse)
 
