@@ -8,4 +8,5 @@
 
 ![actors](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/c5ee9f36-b0ba-4386-841c-d848cde37a0b)
 
-![heatmap](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/a7a0bcae-3cff-43ed-97ea-1f92a795f9d2)
+
+![heatmap](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/2693983a-2450-4eff-b4bf-c19991b7b0ff)
