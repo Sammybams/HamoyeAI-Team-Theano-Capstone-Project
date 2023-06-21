@@ -4,4 +4,4 @@
 
 ![change in crime](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/1ebe0fbc-a1c6-4c5a-a817-d4983700214d)
 
-![actors](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/0e309886-ed7b-4ae0-b4bc-8a65632f0737)
+![actors](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/c5ee9f36-b0ba-4386-841c-d848cde37a0b)
