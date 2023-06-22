@@ -71,16 +71,25 @@ mapping_binned_reverse = {
     6: "0"
 }
 
-# correct_order = {
-#     "101 TO 500": 5,
-#     "11 TO 50": 3,
-#     "1": 1,
-#     "2 TO 10": 2,
-#     "501 TO 1350" :6,
-#     "51 TO 100": 4,
-#     "0": 0 
-# }
+correct_order = {
+    "101 TO 500": 5,
+    "11 TO 50": 3,
+    "1": 1,
+    "2 TO 10": 2,
+    "501 TO 1350" :6,
+    "51 TO 100": 4,
+    "0": 0 
+}
 
+correct_order_reverse = {
+    5: "101 TO 500",
+    3: "11 TO 50",
+    1: "1",
+    2: "2 TO 10",
+    6: "501 TO 1350",
+    4: "51 TO 100",
+    0: "0"
+}
 date = st.date_input(
     "Choose expected date",
     value = datetime.datetime.today(),
@@ -227,9 +236,11 @@ if st.button("Run"):
                       'LOCATION', 'EVENT TYPE', 'SUB EVENT TYPE', 'MAIN ACTOR INVOLVED',
                       'MAIN ACTOR TYPE', 'SUBSIDIARY ACTOR TYPE', 'PREDICTED FATALITIES']
     
-    # record['CORRECT ORDER'] = record['PREDICTED FATALITIES'].map(correct_order)
+    record['PREDICTED FATALITIES'] = record['PREDICTED FATALITIES'].map(correct_order)
     record = record.sort_values(by=['PREDICTED FATALITIES'], ascending=False)
 
+    record['PREDICTED FATALITIES'] = record['PREDICTED FATALITIES'].map(correct_order_reverse)
+    
     # record = record.sort_values(by=['CORRECT ORDER'], ascending=False)
 
     # st.write(record)
