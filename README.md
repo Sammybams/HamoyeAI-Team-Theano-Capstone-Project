@@ -6,4 +6,4 @@
 [![image](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/fc619c26-210f-4e15-b0c3-369d5c34a76a)](https://sammybams.hashnode.dev/from-data-to-insights-building-an-ai-powered-crime-analytics-and-forecasting-tool-for-african-nations)
 
 ## Demo Video of Project
-[Demo](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/70a48c0e-93f3-4a8d-8c73-b06f6919c57e)
+[Demo](https://github.com/Sammybams/HamoyeAI-Team-Theano-Capstone-Project/assets/64220829/b6be3d5f-25c2-4c14-826a-67051b6594e4)
