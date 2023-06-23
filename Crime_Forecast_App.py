@@ -1,4 +1,6 @@
 import streamlit as st
+st.set_page_config(page_title="Crime Forecast App", page_icon="📊")
+
 import pandas as pd
 import numpy as np
 import pyarrow.parquet as pq
