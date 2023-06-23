@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
+st.set_page_config(page_title="Forecasting Toolkit", page_icon="🌍")
 
 import pandas as pd
 import numpy as np
