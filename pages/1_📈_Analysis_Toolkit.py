@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="Analysis Toolkit", page_icon="📈")
+# st.set_page_config(page_title="Analysis Toolkit", page_icon="📈")
 
 import time
 import numpy as np
